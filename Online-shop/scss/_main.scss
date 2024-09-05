@@ -1,0 +1,789 @@
+main {
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+   flex-shrink: 0;
+   width: 100%;
+   height: 100%;
+}
+
+.main {
+
+   &__collection {}
+}
+
+.collections {
+   background-color: #f4f4f5;
+   position: relative;
+   overflow: hidden;
+
+   // .collections__wrapper
+
+   &::before {
+      content: '';
+      z-index: 0;
+      position: absolute;
+      inline-size: toRem(120);
+      block-size: toRem(125);
+      inset-inline-start: 0;
+      inset-block-end: toRem(108);
+      background: url(../img/main/frame-branch.png) 0 0 / cover no-repeat;
+   }
+
+   &::after {
+      content: '';
+      z-index: 0;
+      position: absolute;
+      inline-size: toRem(168);
+      block-size: toRem(265);
+      inset-inline-end: 0;
+      inset-block-end: toRem(157);
+      background: url(../img/main/branch-2-vector.png) 0 0 / cover no-repeat;
+   }
+   
+
+   // .collections__container
+
+   &__container {}
+
+   // .collections__content
+
+   &__content {
+      // @extend %displayFlex;
+      z-index: 2;
+      display: inline-flex;
+      column-gap: toRem(98);
+      padding: toRem(81) toRem(15) toRem(60) 0;
+
+      @media (max-width: toEm(980)) {
+         flex-direction: column;
+         gap: toRem(40);
+         padding-inline-end: 0;
+      }
+
+      @media (max-width: toEm(820)) {
+         padding-block-start: 0;
+      }
+   }
+
+   // .collections__article
+
+   &__article {
+      flex: 0 1 toRem(686);
+      z-index: 1;
+
+      @media (max-width: toEm(980)) {
+         flex: 1 1 auto;
+      }
+
+      & p {
+         @include textDecoration(#000000, clamp(1.25rem, 1.05rem + 1vw, 1.875rem), "Roboto", 400, toRem(55));
+         text-transform: capitalize;
+         margin-block-end: toRem(66);
+
+         @media (max-width: toEm(980)) {
+            margin: 0;
+            // text-align: center;
+         }
+      }
+   }
+
+   // .collections__title
+
+   &__title {
+      @include textDecoration(#000000, clamp(2.375rem, 1.655rem + 3.6vw, 4.625rem), "Roboto", 300, toRem(55));
+      margin-block-end: toRem(55);
+
+      @media (max-width: toRem(980)) {
+         text-align: center;
+      }
+   }
+
+
+   // .collections__image
+
+   &__image {
+      position: relative;
+      z-index: 1;
+      flex: 0 1 toRem(424);
+
+      @media (max-width: toEm(980)) {
+         align-self: center;
+      }
+
+      &::after {
+         content: '';
+         position: absolute;
+         object-fit: contain;
+         aspect-ratio: 424 / 542;
+         width: 100%;
+         top: toRem(20);
+         left: toRem(18);
+         border: toRem(2) solid #b7b7b8;
+         border-radius: toRem(160) 0 toRem(160) 0;
+         z-index: -1;
+         margin-right: toRem(15);
+         right: toRem(-15);
+
+         @media (max-width: toEm(980)) {
+            max-width: toRem(424);
+         }
+
+      }
+
+      & img {
+         object-fit: contain;
+         aspect-ratio: 424 / 542;
+         width: 100%;
+         border-radius: toRem(160) 0 toRem(160) 0;
+
+         @media (max-width: toEm(980)) {
+            max-width: toRem(424);
+         }
+      }
+   }
+}
+
+.link-to-buy {
+   display: inline-flex;
+   justify-content: center;
+   gap: toRem(10);
+   @include textDecoration(#ffffff, clamp(1.25rem, 1.05rem + 1vw, 1.875rem), "Roboto", 400, 1);
+   background-color: #000000;
+   text-align: center;
+   padding: toRem(19) toRem(26);
+   transition: all .3s;
+
+   @media (max-width: toEm(980)) {
+      width: toRem(223);
+      align-self: center;
+   }
+
+   @media (any-hover: hover) {
+      &:hover {
+         background-color: $colorLightGrey;
+         // transform: scale(0.95);
+         border-radius: toRem(8);
+         transform: scale(1.02);
+      }
+   }
+}
+
+.body {
+
+   // .body__wrapper
+
+   &__wrapper {}
+
+
+   // .body__container
+
+   &__container {
+      overflow: hidden;
+   }
+
+   // .body__slider
+
+   &__slider {}
+}
+
+.slider {
+   position: relative;
+   overflow: hidden;
+   max-width: toRem(1290);
+
+   &:before,
+   &:after {
+      position: absolute;
+      top: 0;
+      width: toRem(45);
+      height: 100%;
+      content: "";
+      z-index: 2;
+   }
+
+   &:before {
+      left: toRem(15);
+      background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+   }
+
+   &:after {
+      right: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+   }
+
+   @media (any-hover: hover) {
+      &__top {
+         &:hover {
+            & .slider__body {
+               animation-play-state: paused;
+            }
+         }
+      }
+   }
+
+   // .slider__top
+
+   &__top {
+      padding-block-start: toRem(90);
+      padding-block-end: toRem(45);
+      display: inline-flex;
+      gap: toRem(80);
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+
+      @media (max-width: toEm(640)) {
+            gap: toRem(20);
+         }
+   }
+
+   // .slider__body
+   @keyframes slide {
+      from {
+         transform: translateX(0);
+      }
+
+      to {
+         transform: translateX(-100%);
+      }
+   }
+
+   &__body {
+      @extend %displayFlex;
+      gap: toRem(80);
+      overflow: hidden;
+      animation: 28s slide infinite linear;
+      overflow: hidden;
+
+      @media (max-width: toEm(640)) {
+         gap: toRem(20);   
+      }
+   }
+
+   // .slider__item
+
+   &__item {}
+
+   // .slider__link
+
+   &__link {}
+}
+
+.explore {
+
+   // .explore__container
+
+   &__container {
+      position: relative;
+      padding-block: toRem(45) toRem(70);
+   }
+
+   // .explore__title
+
+   &__title {
+      @include textDecoration(#000, clamp(20px, 0.934rem + 1.49vw, 34px), "Roboto", 400, 1);
+      text-transform: uppercase;
+      text-align: center;
+      padding-block-end: toRem(20);
+
+      @media (min-width: toEm(1420)) {
+         position: absolute;
+         top: 0;
+         left: toRem(-30);
+         writing-mode: vertical-rl;
+         transform: scale(-1, -1);
+         // text-orientation: vertical;
+      }
+   }
+
+   // .explore__items
+
+   &__items {
+      display: grid;
+      gap: toRem(24);
+      grid-template: repeat(2, 1fr) / repeat(auto-fill, minmax(toRem(250), 1fr));
+
+   }
+
+   // .explore__item
+
+   &__item {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      @media (min-width: toEm(550)) {
+
+         &:nth-child(10n + 1),
+         &:nth-child(10n + 8) {
+            grid-column: span 2;
+            grid-row: span 2;
+         }
+      }
+
+      // aspect-ratio: 1 / 1;
+      // align-self: stretch;
+      // justify-self: stretch;
+
+      // &:first-child {
+      //    grid-column: span 2;
+      //    grid-row: span 2;
+      // }
+   }
+
+   &__link {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      transition: all 0.3s;
+
+      @media (any-hover: hover) {
+         &:hover {
+            .footer-info {
+               opacity: 1;
+            }
+
+            & img {
+               scale: 1.1;
+            }
+         }
+      }
+
+
+      & img {
+         width: 100%;
+         height: 100%;
+         aspect-ratio: 1 / 1;
+         object-fit: cover;
+         transition: all 0.3s;
+      }
+   }
+
+}
+
+.info {
+   display: inline-block;
+   position: absolute;
+   z-index: 10;
+   top: toRem(22);
+   left: 0;
+   height: calc(100% - toRem(22));
+   width: 100%;
+   height: auto;
+
+   // .info__item
+
+   &__item {
+      @include textDecoration(#ffffff, toRem(12), "Open Sans", 600, 1.1);
+      text-transform: uppercase;
+      max-width: toRem(58);
+      text-align: center;
+      padding: toRem(4) toRem(12);
+      display: none;
+
+      &:not(:last-child) {
+         margin-block-end: toRem(15);
+      }
+
+      &--hot {
+         background-color: #ff6f61;
+         display: block;
+      }
+
+      &--sale {
+         background-color: #1e2832;
+         display: block;
+      }
+   }
+}
+
+.footer-info {
+   display: flex;
+   justify-content: space-between;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   background-color: #1e2832;
+   @include textDecoration(#ffffff, toRem(16), "Open Sans", 600, 1);
+   padding: toRem(15) toRem(14);
+   text-transform: capitalize;
+   opacity: 0;
+   transition: opacity 0.3s;
+
+   // .footer-info__section
+
+   &__section {}
+
+   // .footer-info__count
+
+   &__count {}
+}
+
+.collection {
+   background-image: url("../img/main/bg-zara.png");
+   position: relative;
+   overflow: hidden;
+
+   &::after {
+      content: '';
+      position: absolute;
+      background: url('../img/main/Big_Zara_Logo.png') 0 0 no-repeat;
+      width: toRem(732);
+      height: toRem(309);
+      right: toRem(-56);
+      top: 0;
+
+      @media (max-width: toEm(820)) {
+         top: 35%;
+         right: 0;
+      }
+
+      @media (max-width: toEm(700)) {
+         display: none;
+      }
+   }
+
+   // .collection__container
+
+   &__container {
+      padding-block-start: toRem(85);
+   }
+
+   // .collection__archive
+
+   &__archive {}
+}
+
+.archive-collection {
+   @extend %displayFlex;
+   gap: toRem(20);
+   justify-content: space-between;
+
+   @media (max-width: toEm(820)) {
+      flex-wrap: wrap-reverse;
+   }
+
+   // .archive-collection__image
+
+   &__image {
+      align-self: end;
+   }
+
+   &__image-logo {
+      aspect-ratio: 190 / 81;
+      // width: 100%;
+      // height: 100%;
+      object-fit: cover;
+      text-align: center;
+   }
+
+   // .archive-collection__main-image
+
+   &__main-image {
+      position: relative;
+      aspect-ratio: 632 / 632;
+      width: 100%;
+      object-fit: contain;
+      transform: translateX(toRem(-83));
+      z-index: 20;
+   }
+
+   // .archive-collection__article
+
+   &__article {
+      position: relative;
+      z-index: 20;
+      flex: 0 1 toRem(504);
+      padding-block-end: toRem(20);
+
+      @media (max-width: toEm(820)) {
+         flex-grow: 1;
+         flex-basis: auto;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+      }
+   }
+
+   &__text {
+      @include textDecoration(#fff, clamp(toRem(20), 0.890rem + 1.80vw, toRem(26)), "Roboto", 400, 250%);
+   }
+
+   // .archive-collection__button
+
+   &__link {
+      display: inline-flex;
+      gap: toRem(5);
+      align-items: center;
+      @include textDecoration(#1e2832, clamp(toRem(20), 0.890rem + 1.80vw, toRem(29)), "Roboto", 400, 1);
+      text-transform: capitalize;
+      background-color: #fff;
+      padding: toRem(19) toRem(26);
+      transition: box-shadow 0.4s, border-radius 0.3s, transform 0.4s;
+      // pointer-events: all;
+
+      &:hover {
+         box-shadow: 0 0 toRem(14) 0 rgb(255, 255, 255);
+         border-radius: toRem(8);
+         transform: scale(1.02);
+      }
+
+      &:active {
+         box-shadow: inset 5px 5px 15px 0px rgba(0, 0, 0, 1);
+      }
+
+      &::before {
+         color: #1e2832;
+      }
+   }
+}
+
+.archive-collection__article> :not(:last-child) {
+   margin-block-end: toRem(35);
+}
+
+.best-sellers {
+
+   &__container {
+      padding-block: toRem(140);
+
+      @media (max-width: toEm(480)) {
+         padding-block: toRem(50);
+      }
+   }
+
+   &__products {
+      display: flex;
+      gap: toRem(24);
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      margin-block-end: toRem(70);
+      overflow: auto;
+      scrollbar-width: none;
+   }
+
+   & .products__article {
+      flex: 0 0 toRem(310);
+   }
+}
+
+.icon-f-filter {}
+
+.best-sellers {
+
+   // .best-sellers__container
+
+   &__container {
+      overflow: hidden;
+   }
+}
+
+.swiper {
+   position: relative;
+   margin-block-end: toRem(20);
+}
+
+.swiper-wrapper {
+   display: flex;
+   flex-wrap: nowrap;
+   scrollbar-width: none;
+}
+
+.swiper-slide {}
+
+.swiper-button-prev,
+.swiper-button-next {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   text-align: center;
+   position: absolute;
+   inset-block-start: 45%;
+   transform: translate(0, -45%);
+   transition: all 0.3s;
+
+   @media (max-width: toEm(600)) {
+      inset-block-start: 100%;
+      inset-block-end: 0;
+      transform: translate(0, -50%);
+      background-color: $colorOrangeRed;
+      width: toRem(35);
+      height: toRem(35);
+      border-radius: 50%;
+   }
+
+   &::after {
+      display: none;
+   }
+
+   &:active {
+      color: black;
+   }
+}
+
+.swiper-button-prev {
+   inset-inline-start: toRem(14);
+}
+
+.swiper-button-next {
+   inset-inline-end: toRem(14);
+
+   &::before {
+      transform: scale(-1, 1);
+   }
+}
+
+.icon-f-arrow-swiper {
+   color: #bdc0c4;
+   font-size: clamp(20px, 1.005rem + 1.22vw, 32px);
+   line-height: 1;
+}
+
+.responsive-buttons {
+   display: none;
+
+   @media (max-width: toEm(600)) {
+      display: block;
+      position: relative;
+      height: toRem(44);
+
+   }
+}
+
+.follow-us {
+   background-color: #f4f4f5;
+
+   // .follow-us__container
+
+   &__container {
+      padding-block: toRem(100);
+   }
+
+   // .follow-us__content
+
+   &__content {
+      display: flex;
+      justify-content: center;
+      gap: toRem(24);
+      flex-wrap: wrap;
+      margin-block-end: toRem(70);
+
+      @media (max-width: toEm(480)) {
+         margin-block-end: toRem(30);
+      }
+   }
+
+   // .follow-us__link
+
+   &__link {
+      position: relative;
+      transition: all .3s;
+      overflow: hidden;
+      &::before {
+         content: '';
+         width: 100%;
+         height: 100%;
+         position: absolute;
+         inset-block-start: 0;
+         inset-inline-start: 0;
+         // background-color: #000000;
+         background: url(../img/icons/f-instagram.svg) 50% / toRem(50) toRem(50) no-repeat,
+         #ffffff;
+         opacity: 0;
+         z-index: 5;
+         transition: all .3s;
+      }
+
+      @media (any-hover: hover) {
+         &:hover {
+
+            &::before {
+               opacity: 0.5;  
+            }
+
+            img {
+               transform: scale(1.05);
+            }
+         }
+      }
+
+      img {
+         transition: all .3s;
+      }
+   }
+
+   // .follow-us__form
+
+   &__form {}
+}
+
+.intro-title {
+
+   &--bold-title {
+      @include textDecoration(#000, clamp(toRem(42), 0.890rem + 1.80vw, toRem(50)), "Roboto", 700, 1);
+      text-align: center;
+      margin-block-end: toRem(35);
+      text-shadow: 0 toRem(5) toRem(7) rgba(66, 68, 90, 0.53);
+
+      @media (max-width: toEm(480)) {
+         margin-block-end: 0;
+      }
+   }
+}
+
+.form {
+
+
+   > {
+      .intro-title {
+         padding-block-end: toRem(70);
+      }
+   }
+
+   // .form__field
+
+   &__field {
+      display: flex;
+      justify-content: space-between;
+      gap: toRem(26);
+      flex-wrap: wrap;
+      max-width: toRem(760);
+      margin: 0 auto;
+
+      input {
+         @include textDecoration(#1e2832, toRem(16), "Roboto", 400, 1);
+         border-bottom: solid #000 toRem(2);
+         padding-inline: toRem(15);
+         padding-block-end: toRem(13);
+         flex: 1 1 toRem(200);
+         outline: none;
+
+         &::placeholder {
+            font-weight: 600;
+         }
+      }
+
+      button {
+         @include textDecoration(#1e2832, toRem(16), "Roboto", 600, 1);
+         text-transform: uppercase;
+         border-bottom: solid #000 toRem(2);
+         padding-inline: toRem(15);
+         padding-block-end: toRem(13);
+         outline: none;
+         transition: all .3s;
+
+           @media (any-hover: hover) {
+            &:hover {
+               color: $colorOrangeRed;
+            }
+           }
+
+         &:active {
+            position: relative;
+            inset-block-start: toRem(2);
+         }
+      }
+   }
+}
