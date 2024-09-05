@@ -1,0 +1,39 @@
+[class*=" icon-"]::before {
+   /* use !important to prevent issues with browser extensions that change fonts */
+   font-family: 'icons';
+   speak: never; 
+   /* Better Font Rendering =========== */
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+ }
+ 
+ .icon-f-account:before {
+   content: "\e900";
+ }
+ .icon-f-filter:before {
+   content: "\e901";
+ }
+ .icon-f-arrow-swiper:before {
+   content: "\e902";
+ }
+ .icon-f-facebook:before {
+   content: "\e903";
+ }
+ .icon-f-instagram:before {
+   content: "\e904";
+ }
+ .icon-f-linkedin:before {
+   content: "\e905";
+ }
+ .icon-f-scroll-to-arrow:before {
+   content: "\e906";
+ }
+ .icon-f-search:before {
+   content: "\e907";
+ }
+ .icon-f-shopping:before {
+   content: "\e908";
+ }
+ .icon-f-twitter:before {
+   content: "\e909";
+ } 

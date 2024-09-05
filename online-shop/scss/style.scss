@@ -1,0 +1,83 @@
+@use "sass:math";
+
+/*--------------fonts-------------*/
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,regular,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:regular,600&display=swap");
+@import "_fonts.scss";
+@import "_icons.scss";
+
+/*-------------reset---------*/
+
+@import "_reset.scss";
+
+/*----------colors------------*/
+
+@import "_colors.scss";
+
+/*-----------mixins--------------*/
+
+@import "mixins";
+
+// Налаштування адаптивної сітки
+// Мінімальна ширина сторінки
+$minWidth: 320;
+// Ширина полотна (макету)
+$maxWidth: 1920;
+// Ширина обмежуючого контейнера (0 = немає обмеження)
+$maxWidthContainer: 1320;
+// Загальний відступ у контейнера
+// (30 = по 15px ліворуч і праворуч, 0 = немає відступу)
+$containerPadding: 30;
+// Ширина спрацьовування першого брейкпоінту
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+/*--for smooth scroll--*/
+html {
+   scroll-behavior: smooth;
+}
+
+.wrapper {
+   background-color: #ffffff;
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+   flex-shrink: 0;
+   font-family: "Open Sans";
+}
+
+[class*="__container"], [class*="--container"] {
+   max-width: toRem($containerWidth);
+   padding-inline: toRem(15);
+   margin: 0 auto;
+}
+
+/*---patterns---*/
+// %container {
+//    max-width: toRem(1270);
+//    padding: 0 toRem(15);
+//    margin: 0 auto;
+// }
+
+%displayFlex {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: toRem(20);
+}
+
+/*---mixins----*/
+@mixin textDecoration ($color, $f-size, $f-family, $f-weight, $l-height) {
+   color: $color;
+   font-size: $f-size;
+   font-family: $f-family;
+   font-weight: $f-weight;
+   line-height: $l-height;
+}
+
+@import "_header.scss";
+
+@import "_footer.scss";
+
+@import "_common.scss";
+
+@import "_main.scss";
